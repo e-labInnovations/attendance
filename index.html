@@ -24,7 +24,7 @@
           <p class="subtitle has-text-danger">You can only submit one attendance. <br /> Please careful</p>
           <div class="box">
             <figure class="avatar">
-              <img src="https://ui-avatars.com/api/?size=128&background=random&length=1&name=U">
+              <img id="avatar" src="https://ui-avatars.com/api/?size=128&background=random&length=1&name=U">
             </figure>
             <div>
               <div class="field">
@@ -39,7 +39,7 @@
               </div>
               <div class="field">
                 <div class="control">
-                  <input id="name" class="input is-large" type="text" placeholder="Name"onclick="validateRollNo()" readonly>
+                  <input id="name" class="input is-large" type="text" placeholder="Name" onclick="validateRollNo()" readonly disabled>
                 </div>
               </div>
               <button id="submit" onclick="addAttendance()" class="button is-block is-info is-large is-fullwidth">Submit</button>
