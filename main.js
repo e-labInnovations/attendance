@@ -63,6 +63,8 @@ const addAttendance = () => {
         submit.classList.remove('is-loading');
         localStorage.setItem(subject, true);
         submit.remove();
+        inputRegNo.disabled = true;
+        inputRollNo.disabled = true;
         msg.innerHTML = `
                       <p class="has-text-grey">
                         You are submitted your attendance.
