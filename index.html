@@ -1,18 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
 
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Attendance App</title>
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
+  <!-- Bulma Version 0.9.0-->
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+  <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 
 <body>
-  <p>Nothing to see here...</p>
-  <!-- Project -->
-  <script src="main.js"></script>
+  <section class="hero is-success is-fullheight">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="column is-4 is-offset-4">
+          <h3 class="title has-text-black">Attendance App</h3>
+          <hr class="login-hr">
+          <p class="subtitle has-text-danger">You can only submit onne attendance. <br /> Please careful</p>
+          <div class="box">
+            <figure class="avatar">
+              <img src="https://ui-avatars.com/api/?size=128&background=random&length=1&name=U">
+            </figure>
+            <div>
+              <div class="field">
+                <div class="control">
+                  <input id="regNo" class="input is-large" type="number" placeholder="Reg. NO Eg: 1804XXXX" autofocus="" onchange="validateRegNo()" onkeyup="validateRegNo()" onclick="validateRegNo()">
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <input id="rollNo" class="input is-large" type="number" placeholder="Roll NO" onchange="validateRollNo()" onkeyup="validateRollNo()" onclick="validateRollNo()">
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <input id="name" class="input is-large" type="text" placeholder="Name" readonly>
+                </div>
+              </div>
+              <button id="submit" onclick="addAttendance()" class="button is-block is-info is-large is-fullwidth">Submit</button>
+            </div>
+          </div>
+          <p class="has-text-grey">
+            <a href="https://e-labinnovations.github.io/">&#169; 2021 e-lab innovations</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section>
+    <div class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Modal title</p>
+          <button class="delete" aria-label="close" onclick="closeModal()"></button>
+        </header>
+        <section class="modal-card-body">
+          sample message
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button" onclick="closeModal()">Cancel</button>
+        </footer>
+      </div>
+    </div>
+  </section>
+  
+  <script async src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script async type="text/javascript" src="./main.js"></script>
 </body>
+
 </html>
