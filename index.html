@@ -5,7 +5,15 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="Attendance App">
+  <meta name="description" content="Attendance app for ELS6. Developed by Mohammed Ashad">
+  <meta name="keywords" content="ELS6, 2021, e-lab, innovations, attendance, app">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <meta name="author" content="Mohammed Ashad">
   <title>Attendance App</title>
+  <link rel="shortcut icon" href="https://e-labinnovations.github.io/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
@@ -24,9 +32,9 @@
           <p class="subtitle has-text-danger">You can only submit one attendance. <br /> Please careful</p>
           <div class="box">
             <figure class="avatar">
-              <img id="avatar" src="https://ui-avatars.com/api/?size=128&background=random&length=1&name=U">
+              <img id="avatar" src="https://e-labinnovations.github.io/assets/img/icons/apple-touch-icon-120x120.png">
             </figure>
-            <div>
+            <div id="form">
               <div class="field">
                 <div class="control">
                   <input id="regNo" class="input is-large" type="number" placeholder="Reg. NO Eg: 1804XXXX" autofocus="" onchange="validateRegNo()">
@@ -42,7 +50,8 @@
                   <input id="name" class="input is-large" type="text" placeholder="Name" onclick="validateRollNo()" readonly disabled>
                 </div>
               </div>
-              <button id="submit" onclick="addAttendance()" class="button is-block is-info is-large is-fullwidth">Submit</button>
+              <div id="msg"></div>
+              <button id="submit" disabled onclick="addAttendance()" class="button is-block is-info is-large is-fullwidth">Submit</button>
             </div>
           </div>
           <p class="has-text-grey">
@@ -52,7 +61,6 @@
       </div>
     </div>
   </section>
-  
   <section>
     <div class="modal">
       <div class="modal-background"></div>
@@ -70,8 +78,7 @@
       </div>
     </div>
   </section>
-  
-  <script async src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script async type="text/javascript" src="./main.js"></script>
 </body>
 
