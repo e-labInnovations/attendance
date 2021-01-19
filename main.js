@@ -119,8 +119,10 @@ const setStudent = (regNo, rollNo) => {
 
 const checkIsOpen = (subject) => {
   let url = `${api}?action=isOpen&subject=${subject}`;
+  submit.innerText = 'Loading..';
   axios.get(url)
     .then(function(response) {
+      submit.innerText = 'Submit';
       isOpen = response.data.isOpen;
       if (!isOpen) {
         submit.remove();
@@ -202,7 +204,7 @@ const getParameter = () => {
       setStudent(regNo, rollNo);
     }
   } else {
-    console.log('No subject')
+    form.innerHTML = `<h1> Home </h1>`
   }
 
 })();
