@@ -18,7 +18,6 @@ formStatus.addEventListener('change', (e) => {
   let url = `${api}?action=changeSubjectStatus&userToken=${adminToken}&subject=${subject}&newState=${newStatus}`;
   axios.get(url)
     .then(function(response) {
-      console.log(response.data);
       if (response.data.status) {
         statusText.innerText = response.data.isActive ? 'Enabled' : 'Disabled';
         if (response.data.isActive) {
@@ -70,10 +69,12 @@ const updateAttendees = (attendees) => {
   numbersArea.value = attendeesNos;
   table.innerHTML = '';
   attendees.forEach((student) => {
-    var formattedDate = moment(student.date, 'YYYY-MM-DDThh:mm:ss:sssZ').format('hh:mm A');
+    var formattedDate = moment(student.date, 'YYYY-MM-DDThh:mm:ss:sssZ').format('hh:mmA DD/MM/YY');
     var newRow = table.insertRow();
     var cell0 = newRow.insertCell();
-    var text0 = document.createTextNode(student.student.rollNo);
+    var text0 = document.createElement('span');
+    text0.className = 'tag is-black';
+    text0.innerText = student.student.rollNo;
     cell0.appendChild(text0);
     var cell1 = newRow.insertCell();
     var text1 = document.createTextNode(student.student.name);
@@ -81,8 +82,7 @@ const updateAttendees = (attendees) => {
     var cell2 = newRow.insertCell();
     cell2.classList.add('level-right')
     var text2 = document.createElement('span');
-    text2.className = 'tag is-black';
-    text2.innerText = formattedDate;
+    var text2 = document.createTextNode(formattedDate);
     cell2.appendChild(text2);
   })
 }
