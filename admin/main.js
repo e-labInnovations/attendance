@@ -26,6 +26,7 @@ const getAttendance = (subject) => {
       if (attendanceData.status) {
         formStatus.checked = attendanceData.isActive;
         statusText.innerText = attendanceData.isActive ? 'Enabled' : 'Disabled';
+        studentsCount.innerText = attendanceData.attendees.length;
       } else {
         if (attendanceData.autherized) {
           showModal('Error', attendanceData.message, 'error');
@@ -48,7 +49,21 @@ subject;
 newState;
 */
 
-
+const updateAttendees = (attendees) => {
+  let attendeesNos = attendees.map(student => student.rollNo).join('\n');
+  numbersArea.value = attendeesNos;
+  table.innerHTML = '';
+  attendees.forEach((student) => {
+    var formattedDate = moment(student.date, 'YYYY-MM-DDThh:mm:ss:sssZ').format('hh:mm A')
+    table.append(`
+      <tr>
+        <td width="5%">${student.student.rollNo}</td>
+        <td>${student.student.name}</td>
+        <td class="level-right"><span class="tag is-black">${formattedDate}</span></td>
+      </tr>
+    `)
+  })
+}
 const shareAttendance = () => {
   console.log('share');
 }
@@ -101,12 +116,7 @@ const getParameter = () => {
     burger.classList.toggle('is-active');
     menu.classList.toggle('is-active');
   });
-})();
 
-
-if (localStorage.getItem('adminToken')) {
-  adminToken = localStorage.getItem('adminToken');
-  let parameter = getParameter();
   if (parameter.subject) {
     subject = parameter.subject;
     subjectText.innerText = subject;
@@ -114,7 +124,14 @@ if (localStorage.getItem('adminToken')) {
   } else {
     content.style.display = 'none';
   }
-} else {
-  alert('You are not logged in. Please login first');
-  window.location.replace('./login');
-}
+  if (localStorage.getItem('adminToken')) {
+    adminToken = localStorage.getItem('adminToken');
+    let parameter = getParameter();
+  } else {
+    showModal('Alert', 'You are not logged in. Please login first', 'error');
+    if (subject) {
+      sessionStorage.setItem('subject', subject);
+    }
+    window.location.replace('./login');
+  }
+})();

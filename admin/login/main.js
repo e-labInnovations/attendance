@@ -21,7 +21,9 @@ const handleSubmit = () => {
       submit.classList.remove('is-loading');
       if (response.data.status) {
         localStorage.setItem('adminToken', response.data.userToken);
-        window.location.replace('/admin');
+        let subject = sessionStorage.getItem('subject');
+        let link = '/admin' + subject?'?subject='+subject:'';
+        window.location.replace(link);
       } else {
         showModal('Error', response.data.message, 'error');
       }
