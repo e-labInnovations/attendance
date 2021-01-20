@@ -1,1 +1,3 @@
+/admin/login  /admin/login
+/admin/*  /admin?subject=:splat
 /*  /?subject=:splat
