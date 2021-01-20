@@ -2,6 +2,7 @@ const modal = document.querySelector('.modal');
 const studentsCount = document.querySelector('#studentsCount');
 const table = document.querySelector('#table');
 const formStatus = document.querySelector('#formStatus');
+const statusText = document.querySelector('#statusText');
 const numbersArea = document.querySelector('#numbersArea');
 const content = document.querySelector('#content');
 const subjectText = document.querySelector('#subject');
@@ -12,6 +13,7 @@ var subject = null;
 var attendanceData = null;
 
 formStatus.addEventListener('change', (e) => {
+  statusText.innerText = e.target.checked ? 'Enabled' : 'Disabled';
   console.log(e.target.checked);
 })
 
@@ -22,7 +24,8 @@ const getAttendance = (subject) => {
       attendanceData = response.data;
       console.log(attendanceData);
       if (attendanceData.status) {
-        
+        formStatus.checked = attendanceData.isActive;
+        statusText.innerText = attendanceData.isActive ? 'Enabled' : 'Disabled';
       } else {
         if (attendanceData.autherized) {
           showModal('Error', attendanceData.message, 'error');
@@ -44,6 +47,8 @@ userToken;
 subject;
 newState;
 */
+
+
 const shareAttendance = () => {
   console.log('share');
 }
