@@ -22,8 +22,10 @@ const handleSubmit = () => {
       if (response.data.status) {
         localStorage.setItem('adminToken', response.data.userToken);
         let subject = sessionStorage.getItem('subject');
-        let link = '/admin' + subject?'?subject='+subject:'';
+        let link = subject ? '/admin?subject=' + subject : '/admin';
         window.location.replace(link);
+        if (subject)
+          sessionStorage.removeItem('subject')
       } else {
         showModal('Error', response.data.message, 'error');
       }

@@ -18,6 +18,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
   <!-- Bulma Version 0.9.0-->
   <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
   <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 
@@ -26,7 +27,7 @@
   <nav class="navbar is-white">
     <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item brand-text" href="../index.html">
+        <a class="navbar-item brand-text">
           Attendance App Admin
         </a>
         <div class="navbar-burger burger" data-target="navMenu">
@@ -40,7 +41,7 @@
           <a class="navbar-item" href="">
             Home
           </a>
-          <a class="navbar-item">
+          <a class="navbar-item" onclick="logout()">
             Logout
           </a>
         </div>
@@ -75,86 +76,84 @@
             </div>
           </div>
         </section>
-        
         <div id="content">
-        <section class="info-tiles">
-          <div class="tile is-ancestor has-text-centered">
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title" id="subject">Loading..</p>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title" id="studentsCount">Loading..</p>
-                <p class="subtitle">Students Submitted</p>
-              </article>
-            </div>
-          </div>
-        </section>
-        <div class="columns">
-          <div class="column is-6">
-            <div class="card events-card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  Attendance
-                </p>
-              </header>
-              <div class="card-table">
-                <div class="content">
-                  <table class="table is-fullwidth is-striped">
-                    <tbody id="table">
-                      <tr>
-                        <td width="5%">18</td>
-                        <td>Mohammed Ashad MM</td>
-                        <td class="level-right"><span class="tag is-black">12:45 PM</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+          <section class="info-tiles">
+            <div class="tile is-ancestor has-text-centered">
+              <div class="tile is-parent">
+                <article class="tile is-child box">
+                  <p class="title" id="subject">Loading..</p>
+                </article>
               </div>
-              <footer class="card-footer">
-                <a class="card-footer-item"> </a>
-              </footer>
+              <div class="tile is-parent">
+                <article class="tile is-child box">
+                  <p class="title" id="studentsCount">Loading..</p>
+                  <p class="subtitle">Students Submitted</p>
+                </article>
+              </div>
             </div>
-          </div>
-          <div class="column is-6">
-            <div class="card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  Form Status
-                </p>
-              </header>
-              <div class="card-content">
-                <div class="content">
-                  <span id="statusText">Loading..</span>
-                  <div class="control">
-                    <input type="checkbox" id="formStatus" />
-                    <label for="formStatus" />
+          </section>
+          <div class="columns">
+            <div class="column is-6">
+              <div class="card events-card">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Attendance
+                  </p>
+                </header>
+                <div class="card-table">
+                  <div class="content">
+                    <table class="table is-fullwidth is-striped">
+                      <tbody id="table">
+                        <tr>
+                          <td><progress class="progress is-small is-primary" max="100">15%</progress></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <footer class="card-footer">
+                  <a class="card-footer-item"> </a>
+                </footer>
+              </div>
+            </div>
+            <div class="column is-6">
+              <div class="card">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Form Status
+                  </p>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <span id="statusText">Loading..</span>
+                    <div class="control">
+                      <input type="checkbox" id="formStatus" />
+                      <label for="formStatus" />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  Attendance
-                </p>
-                <a class="card-header-icon" aria-label="Share" onclick="shareAttendance()">
-                  <span class="icon">
-                    <i class="fa fa-share" aria-hidden="true"></i>
-                  </span>
-                </a>
-                <a class="card-header-icon" aria-label="Copy to clipboard" onclick="copyAttendance()">
-                  <span class="icon">
-                    <i class="fa fa-copy" aria-hidden="true"></i>
-                  </span>
-                </a>
-              </header>
-              <div class="card-content">
-                <div class="content">
-                  <div class="control">
-                    <textarea id="numbersArea" class="textarea" placeholder="Numbers"></textarea>
+              <div class="card">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Attendance
+                  </p>
+                  <a class="card-header-icon" aria-label="Share" onclick="shareAttendance()">
+                    <span class="icon">
+                      <i class="fa fa-share" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                  <a class="card-header-icon" aria-label="Copy to clipboard" onclick="copyAttendance()">
+                    <span class="icon">
+                      <i class="fa fa-copy" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <div class="control">
+                      <textarea id="numbersArea" class="textarea" placeholder="Numbers"></textarea>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -164,9 +163,6 @@
       </div>
     </div>
   </div>
-          
-        </div>
-  
   <section>
     <div class="modal">
       <div class="modal-background"></div>
@@ -184,7 +180,8 @@
       </div>
     </div>
   </section>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="../config.js"></script>
   <script type="text/javascript" src="./main.js"></script>
