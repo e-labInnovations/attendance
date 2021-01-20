@@ -11,7 +11,6 @@ const msg = document.getElementById('msg');
 var isOpen = true;
 var student = { status: false };
 var subject = null;
-const api = "https://script.google.com/macros/s/AKfycbyGwfwpGj18FB9kbLo4J-zml08bxTgWfLquMdoo6h6m2PwaXQsnkuUy7w/exec";
 
 const CancelToken = axios.CancelToken;
 let cancel;
