@@ -1,15 +1,23 @@
 const modal = document.querySelector('.modal');
-
+const inputUsername = document.querySelector('#username');
+const inputPassword = document.querySelector('#password');
+const inputSubmit = document.querySelector('#submit');
 
 var adminToken = null;
+
 
 
 if (localStorage.getItem('adminToken')) {
   adminToken = localStorage.getItem('adminToken');
   alert('adminToken exist:', adminToken);
-} else {
-  alert('You are not logged in. Please login first');
-  window.location = '/admin/login'
+  window.location = '/admin'
+}
+
+const handleSubmit = () => {
+  let username = inputUsername.value;
+  let password = inputPassword.value;
+  
+  alert(username + password)
 }
 
 
@@ -31,15 +39,3 @@ const showModal = (title, message, status) => {
 const closeModal = () => {
   modal.classList.remove('is-active');
 }
-
-// The following code is based off a toggle menu by @Bradcomp
-// source: https://gist.github.com/Bradcomp/a9ef2ef322a8e8017443b626208999c1
-(function() {
-    var burger = document.querySelector('.burger');
-    var menu = document.querySelector('#'+burger.dataset.target);
-    burger.addEventListener('click', function() {
-        burger.classList.toggle('is-active');
-        menu.classList.toggle('is-active');
-    });
-})();
- 

@@ -1,43 +1,70 @@
 <!DOCTYPE html>
 <html>
- 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login - Attendance App</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-    <link rel="stylesheet" type="text/css" href="./style.css">
-  </head>
- 
-  <body>
-    <section class="hero is-fullheight">
-      <div class="hero-body has-text-centered">
-        <div class="login">
-          <img src="https://e-labinnovations.github.io/assets/img/logo.png" width="325px" style="padding: 30px" />
-          <div>
-            <div class="field">
-              <div class="control">
-                <input class="input is-medium is-rounded" type="email" placeholder="hello@example.com" autocomplete="username" required />
-              </div>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="Admin Login - Attendance App">
+  <meta name="description" content="Attendance app for ELS6. Developed by Mohammed Ashad">
+  <meta name="keywords" content="ELS6, 2021, e-lab, innovations, attendance, app">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <meta name="author" content="Mohammed Ashad">
+  <link rel="shortcut icon" href="https://e-labinnovations.github.io/favicon.ico" type="image/x-icon">
+  <title>Login - Attendance App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+  <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+
+<body>
+  <section class="hero is-fullheight">
+    <div class="hero-body has-text-centered">
+      <div class="login">
+        <img src="https://e-labinnovations.github.io/assets/img/logo.png" width="325px" style="padding: 30px" />
+        <div>
+          <div class="field">
+            <div class="control">
+              <input id="username" class="input is-medium is-rounded" type="text" placeholder="Username" autocomplete="username" required />
             </div>
-            <div class="field">
-              <div class="control">
-                <input class="input is-medium is-rounded" type="password" placeholder="**********" autocomplete="current-password" required />
-              </div>
-            </div>
-            <br />
-            <button class="button is-block is-fullwidth is-primary is-medium is-rounded" type="submit">
-              Login
-            </button>
           </div>
-          <br>
+          <div class="field">
+            <div class="control">
+              <input id="password" class="input is-medium is-rounded" type="password" placeholder="**********" autocomplete="current-password" required />
+            </div>
+          </div>
+          <br />
+          <button id="submit" class="button is-block is-fullwidth is-primary is-medium is-rounded" onclick="handleSubmit()">
+            Login
+          </button>
         </div>
+        <br>
       </div>
-    </section>
-    <script src="./main.js"></script>
-  </body>
- 
+    </div>
+  </section>
+  
+  <section>
+    <div class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Modal title</p>
+          <button class="delete" aria-label="close" onclick="closeModal()"></button>
+        </header>
+        <section class="modal-card-body">
+          sample message
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button" onclick="closeModal()">Cancel</button>
+        </footer>
+      </div>
+    </div>
+  </section>
+  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./main.js"></script>
+</body>
+
 </html>
- 
